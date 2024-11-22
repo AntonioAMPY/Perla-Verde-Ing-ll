@@ -73,7 +73,7 @@ export default function Header() {
                                     >
                                         <ul className="p-2">
                                             <li className="font-bold border-b py-2">
-                                                {user.first_name} {user.last_name}
+                                                {user.getFullName}
                                             </li>
                                             <li className="py-2">Usuario: {user.user_name}</li>
                                             <li className="py-2">

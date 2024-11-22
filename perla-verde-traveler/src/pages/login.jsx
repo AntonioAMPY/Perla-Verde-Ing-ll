@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../provider/user_context";
+import { mockUsers } from "../constants/mock_users";
 
 export default function LoginPage() {
     const { login } = useUser();
@@ -9,16 +10,14 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
+
+    const findUser = (userName, password) => {
+        return mockUsers.find(u => u.user_name === userName && u.password === password);
+    };
+
     const handleLogin = (e) => {
         e.preventDefault();
-        const mockUsers = [
-            { user_name: "pepito", password: "1234", first_name: "Pepito", last_name: "Perez" },
-            { user_name: "pascual", password: "1234", first_name: "Pascual", last_name: "Rodriguez" },
-            { user_name: "falcao", password: "1234", first_name: "Falcao", last_name: "Garcia" },
-        ];
-
-        const user = mockUsers.find(u => u.user_name === userName && u.password === password);
-
+        const user = findUser(userName, password);
         if (user) {
             login(user);
             setErrorMessage("");
