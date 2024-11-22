@@ -1,15 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Star, MapPin, Calendar, CreditCard } from "lucide-react";
-import Header from "../components/header"
 
 
 
-export default function Home() {
+export default function Home({ user }) {
+    const navigate = useNavigate();
     const [rating, setRating] = useState(0);
 
     return (
         <div className="min-h-screen bg-green-50">
-            <Header />
             <section className="relative bg-green-500 text-white py-32">
                 <div className="absolute inset-0 z-0">
                     <img
